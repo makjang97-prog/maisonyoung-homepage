@@ -33,14 +33,29 @@ python3 -m http.server 8000
 
 `index.html` 을 더블클릭해도 대부분 보이지만, 폰트·이미지 경로 문제를 피하려면 위처럼 띄우는 편이 안전합니다.
 
-## 배포 (Vercel)
+## 배포 현황 (2026-11-18 연결 완료)
 
-빌드 설정이 필요 없습니다.
+빌드 도구 없이 이 폴더가 그대로 배포됩니다.
 
-1. **가장 빠른 방법** — Vercel 대시보드에서 `site` 폴더를 그대로 끌어다 놓기(또는 `vercel` CLI에서 `site` 폴더에서 `vercel deploy`).
-2. **Git 연동** — 저장소에 `site/` 를 올리고 Vercel 프로젝트의 **Root Directory** 를 `site` 로, Framework Preset은 **Other**, Build Command는 비움, Output Directory는 `site`(= 루트)로 두면 됩니다.
-3. 도메인(`maisonyoung.co.kr`) 연결은 Vercel 프로젝트 → Settings → Domains 에서 추가하고, 안내되는 A/CNAME 레코드를 도메인 등록업체(가비아·후이즈 등)에 넣습니다. 연결 후 `https://` 자동 발급.
-4. 도메인이 정해지면 `index.html` 의 `og:image` 를 `https://도메인/images/eardream-set-1600.jpg` 처럼 **절대 주소**로 바꿔 주세요(카톡·SNS 공유 썸네일).
+| 항목 | 값 |
+|---|---|
+| GitHub 저장소 | https://github.com/makjang97-prog/maisonyoung-homepage (public, `main`) |
+| Vercel 프로젝트 | `maisonyoung` (팀 `maisonyoung`, Hobby 무료) — 저장소 루트 = 이 폴더 |
+| 운영 주소 | **https://maisonyoung.co.kr** |
+| 함께 연결 | `www.maisonyoung.co.kr`(같은 사이트), `maisonyoung.kr`·`www.maisonyoung.kr`(308 리다이렉트 → `maisonyoung.co.kr`) |
+| Vercel 기본 주소 | https://maisonyoung.vercel.app |
+| DNS | 가비아 DNS 관리 (A `@` → `216.198.79.1`, CNAME `www` → `74bf7955529234ec.vercel-dns-017.com.`) |
+
+**수정하는 방법** — 이 폴더의 파일을 고쳐 `main` 브랜치에 push 하면 Vercel이 자동으로 다시 배포합니다(1분 내).
+
+```bash
+cd documents/maisonyoung-homepage/site
+git add -A && git commit -m "문구 수정" && git push
+```
+
+주의: `maisonyoung.co.kr` 의 **MX(다음 스마트워크 2건)·TXT(SPF)** 레코드는 메일용이므로 DNS에서 지우거나 바꾸지 않습니다. 웹 연결용 A/CNAME만 위 값으로 유지합니다.
+
+Vercel Hobby는 약관상 비상업·개인 용도 기준입니다. 법인 사이트로 트래픽이 늘면 유료 전환을 요청받을 수 있고, 그때는 Cloudflare Pages·GitHub Pages 같은 무료 대안으로 옮길 수 있습니다.
 
 ## 아직 비어 있는 자리 — 채우는 방법
 
